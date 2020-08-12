@@ -25,7 +25,6 @@ public class SoapConsumerClient {
 		// Send request & recieve response
 		template = new WebServiceTemplate(marshaller);
 		GetStateResponse response = (GetStateResponse) template.marshalSendAndReceive("http://localhost:8888/soapWS", request);
-		
 		return response.getState();
 	}
 }

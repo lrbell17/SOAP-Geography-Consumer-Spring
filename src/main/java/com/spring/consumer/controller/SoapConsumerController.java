@@ -15,7 +15,15 @@ public class SoapConsumerController {
 	private SoapConsumerClient client;
 	
 	@GetMapping("/getState/{stateName}")
-	public State getState(@PathVariable String stateName) {
-		return client.getStateFromSoap(stateName);
+	public Object getState(@PathVariable String stateName) {
+		
+		State state = client.getStateFromSoap(stateName);
+		
+		if (state == null) {
+			return "Invalid entry!";
+		}
+		else {
+			return state;
+		}
 	}
 }
